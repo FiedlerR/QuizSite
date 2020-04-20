@@ -78,7 +78,7 @@ $content .= <<<CONTENT
 				<br>
 				$percentageOfPoints%
 			</p>
-			<input class="ButtonAni" id="submit" type="submit" value="Quiz beenden">
+			<input class="ButtonAni" id="submit" type="submit" value="Close Quiz">
 		</article>
 	</form>
 	</body>

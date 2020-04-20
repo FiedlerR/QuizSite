@@ -29,7 +29,7 @@ $content .= <<<CONTENT
 		<p>$row[description]</p>
 		<!--<p>Letzter versuch: 0%</p>!-->
 		<br>
-		<input class="ButtonAni" id="submit" type="submit" value="Quiz starten">
+		<input class="ButtonAni" id="submit" type="submit" value="Start Quiz">
 	</article>
 </form>
 CONTENT;

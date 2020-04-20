@@ -46,7 +46,7 @@ CONTENT;
 }
 	$content .= <<<CONTENT
 		<article class="center">
-			<input class="ButtonAni" id="submitDisabled" type="submit" value="Antworten überprüfen" disabled>
+			<input class="ButtonAni" id="submitDisabled" type="submit" value="Check Answers" disabled>
 		</article>
 	</form>
 	<script>
