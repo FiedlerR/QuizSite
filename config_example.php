@@ -1,4 +1,8 @@
 <?php
+   /**
+   * example for config.php
+   * create an untracked config.php to connect to the database
+   */
    define('DB_HOST', 'mysql:host=localhost');
    define('DB_USERNAME', 'USERNAME');
    define('DB_PASSWORD', 'PASSWORD');
