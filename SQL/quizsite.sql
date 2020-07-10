@@ -30,38 +30,38 @@ CREATE TABLE `answer` (
 --
 
 INSERT INTO `answer` (`pk_fk_questionID`, `pk_answerID`, `AnswerText`) VALUES
-(1, 1, 'a router'),
-(2, 1, 'extranet'),
-(3, 1, 'an intranet'),
-(4, 1, 'convergence'),
-(5, 1, 'a router'),
-(6, 1, 'extranet'),
-(7, 1, 'an intranet'),
-(8, 1, 'convergence'),
-(1, 2, 'a firewall'),
-(2, 2, 'intranet'),
-(3, 2, 'the internet'),
-(4, 2, 'congestion'),
-(5, 2, 'a firewall'),
-(6, 2, 'intranet'),
-(7, 2, 'the internet'),
-(8, 2, 'congestion'),
-(1, 3, 'a web server'),
-(2, 3, 'wired LAN'),
-(3, 3, 'an extranet'),
-(4, 3, 'optimization'),
-(5, 3, 'a web server'),
-(6, 3, 'wired LAN'),
-(7, 3, 'an extranet'),
-(8, 3, 'optimization'),
-(1, 4, 'a DSL modem'),
-(2, 4, 'wireless LAN'),
-(3, 4, 'a local area network'),
-(4, 4, 'synchronization'),
-(5, 4, 'a DSL modem'),
-(6, 4, 'wireless LAN'),
-(7, 4, 'a local area network'),
-(8, 4, 'synchronization');
+(1, 1, '10'),
+(2, 1, '12'),
+(3, 1, '25'),
+(4, 1, '0'),
+(5, 1, '30'),
+(6, 1, '3'),
+(7, 1, '50'),
+(8, 1, '1'),
+(1, 2, '11'),
+(2, 2, '10'),
+(3, 2, '30'),
+(4, 2, '1'),
+(5, 2, '61'),
+(6, 2, '44'),
+(7, 2, '40'),
+(8, 2, '60'),
+(1, 3, '31'),
+(2, 3, '5'),
+(3, 3, '3'),
+(4, 3, '2'),
+(5, 3, '105'),
+(6, 3, '33'),
+(7, 3, '65'),
+(8, 3, '70'),
+(1, 4, '21'),
+(2, 4, '0'),
+(3, 4, '5'),
+(4, 4, '10'),
+(5, 4, '77'),
+(6, 4, '40'),
+(7, 4, '82'),
+(8, 4, '24');
 
 -- --------------------------------------------------------
 
@@ -81,14 +81,14 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`pk_questionID`, `fk_pk_quizID`, `question`, `rightAnswer`) VALUES
-(1, 1, 'Which device performs the function of determining the path that messages should take through internetworks?', 1),
-(2, 1, 'Which area of the network would a college IT staff most likely have to redesign as a direct result of many students bringing their own tablets and smartphones to school to access school resources?', 4),
-(3, 1, 'An employee at a branch office is creating a quote for a customer. In order to do this, the employee needs to access confidential pricing information from internal servers at the Head Office. What type of network would the employee access?', 1),
-(4, 1, 'Which term describes the state of a network when the demand on the network resources exceeds the available capacity?', 2),
-(5, 2, 'Erste Frage', 1),
-(6, 2, 'Zweite Frage', 4),
-(7, 2, 'Dritte Frage', 1),
-(8, 2, 'Vierte Frage', 2);
+(1, 1, 'Task: 5 + 5', 1),
+(2, 1, 'Task: 5 - 5', 4),
+(3, 1, 'Task: 5 * 5', 1),
+(4, 1, 'Task: 5 : 5', 2),
+(5, 2, 'Task: 25 + 5', 1),
+(6, 2, 'Task: 35 + 5', 4),
+(7, 2, 'Task: 45 + 5', 1),
+(8, 2, 'Task: 55 + 5', 2);
 
 -- --------------------------------------------------------
 

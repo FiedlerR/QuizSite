@@ -26,12 +26,12 @@ $content = <<<CONTENT
 <html>
 	<head>
 		<title>$siteTitle</title>
-		<link href="quiz.css" rel="stylesheet" type="text/css">
+		<link href="CSS/quiz.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<nav>
 			<a class="home" href="index.php" title="Home">
-			<img src="Home.png" alt="Home" width="60%" Height="60%">
+			<img src="assets/home.png" alt="Home" width="60%" Height="60%">
 			</a>
 		</nav>
 		<form id="firstform" action="index.php">
@@ -57,50 +57,65 @@ while ($row = $sqlQuestion->fetch()) {
 							</p>
 CONTENT;
 
-//prepare statement to fetch questions for specified quiz id
+	//prepare statement to fetch questions for specified quiz id
 	$sqlAnswer = $pdo->prepare("SELECT * FROM Answer WHERE pk_fk_questionID = :ID");
+
+	//bind variable and execute prepared statement
 	$sqlAnswer->execute(array('ID' => $row["pk_questionID"]));
 
+	//create answers
 	while ($row2 = $sqlAnswer->fetch()) {
+
+		//create unchecked answer radio if the user chooses another answer
 		if (isset($_POST["answer" . $row["pk_questionID"]]) &&  $_POST["answer" . $row["pk_questionID"]] != $row2["AnswerText"]) {
 			$content .= <<<CONTENT
 				<input class="radios" id="$row2[AnswerText]" type="radio" name="answer$row[pk_questionID]" value="$row2[AnswerText]"  disabled>
 CONTENT;
 		} else {
+			//create checked answer radio if the user chooses this answer
 			$content .= <<<CONTENT
 			<input class="radios" id="$row2[AnswerText]" type="radio" name="answer$row[pk_questionID]" value="$row2[AnswerText]" checked="checked" disabled >
 CONTENT;
 		}
-		$content .= <<<CONTENT
-								<label class="
-CONTENT;
+
+		//check if answer is the right answer
 		if ($row["rightAnswer"] == $row2["pk_answerID"]) {
+			//check if the user chooses the right answer 
 			if ($_POST["answer" . $row["pk_questionID"]] == $row2["AnswerText"]) {
+				//add point to reached points
 				$points++;
+				//create green answer label
 				$content .= <<<CONTENT
-								rightAnswer
+				<label class="rightAnswer" for="$row2[AnswerText]">$row2[AnswerText]</label><br>
+CONTENT;
+			} else {
+				//create answer label
+				$content .= <<<CONTENT
+				<label class="" for="$row2[AnswerText]">$row2[AnswerText]</label><br>
 CONTENT;
 			}
 		} else {
+			//create wrong answer label
 			$content .= <<<CONTENT
-								wrongAnswer
+			<label class="wrongAnswer" for="$row2[AnswerText]">$row2[AnswerText]</label><br>
 CONTENT;
 		}
-		$content .= <<<CONTENT
-								" for="$row2[AnswerText]">$row2[AnswerText]</label><br>
-CONTENT;
 	}
+	//close question card
 	$content .= <<<CONTENT
 						</article>
 CONTENT;
 }
+
+//calculate reached percentage
 $percentageOfPoints = ($points / $maxPoints) * 100;
+//create result card
 $content .= <<<CONTENT
 		<article class="center">
 				<p>
-				Endergebnis:
+				Result:
 				<br>
-				$points von $maxPoints 
+				$points of $maxPoints 
 				<br>
 				$percentageOfPoints%
 			</p>
@@ -110,4 +125,6 @@ $content .= <<<CONTENT
 	</body>
 </html>
 CONTENT;
+
+//print generated site content
 echo $content;
